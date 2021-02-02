@@ -9,7 +9,6 @@ exports.getCities = async (req, res) => {
                 apikey: 'CUJAJTOBSVMOWAHP'
             }
         });
-        console.log(data.data);
         res.status(200).send(data.data)
     } catch (error) {
         return res.json({
