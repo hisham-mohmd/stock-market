@@ -1,1 +1,0 @@
-exports.uri = 'https://www.alphavantage.co/query';
