@@ -1,3 +1,7 @@
+.tables {
+    width :100%;
+    overflow: scroll;
+}
 #customers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;

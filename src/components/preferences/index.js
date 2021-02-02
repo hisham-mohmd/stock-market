@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import axios from "../../axios";
 import './index.css';
 import TableData from '../common/result-table'
+import { data } from './data'
 class preferences extends Component {
     state = {
-        data: ['IBM', 'INFOSYS', 'Tesco'],
         selected: null,
         tableData: null,
         loading: false
@@ -13,7 +13,7 @@ class preferences extends Component {
         this.setState({ loading: true, tableData: null })
         await axios.get('/report/symbol/' + this.state.selected).then(response => {
             if (response.status === 200) {
-                    this.setData(response.data);
+                this.setData(response.data);
             } else {
                 this.setState({ loading: false, tableData: null });
             }
@@ -36,7 +36,7 @@ class preferences extends Component {
         })
     }
     render() {
-        const { data, loading, tableData } = this.state
+        const { loading, tableData } = this.state
         return (
             <div className="container border">
                 <h2>National Stock Exchange</h2>
@@ -50,7 +50,7 @@ class preferences extends Component {
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 {data.map((dropData, i) => {
                                     return (
-                                        < a className="dropdown-item" key={i} href="#" onClick={() => this.setSelected(dropData)}>{dropData}</a>
+                                        < a className="dropdown-item" key={i} href="#" onClick={() => this.setSelected(dropData.symbol)}>{dropData.name}</a>
                                     );
                                 })
                                 }

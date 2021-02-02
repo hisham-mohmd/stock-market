@@ -3,26 +3,28 @@ import './result.css'
 
 function TableData(props) {
     return (
-        <table id="customers">
-            <tr>
-                {
-                    props.data && props.data.headers.map((header, i) => {
-                        if (header !== 'Description' && i < 6) {
-                            return (<th key={i}>{header}</th>)
-                        }
-                    })
-                }
-            </tr>
-            <tr>
-                {
-                    props.data && props.data.headers.map((header, i) => {
-                        if (header !== 'Description' && i < 6) {
-                            return (<td key={i}>{props.data.contents[header]}</td>)
-                        }
-                    })
-                }
-            </tr>
-        </table>
+        <div className="tables">
+            <table id="customers">
+                <tr>
+                    {
+                        props.data && props.data.headers.map((header, i) => {
+                            if (header !== 'Description') {
+                                return (<th key={i}>{header}</th>)
+                            }
+                        })
+                    }
+                </tr>
+                <tr>
+                    {
+                        props.data && props.data.headers.map((header, i) => {
+                            if (header !== 'Description') {
+                                return (<td key={i}>{props.data.contents[header]}</td>)
+                            }
+                        })
+                    }
+                </tr>
+            </table>
+        </div>
     );
 }
 export default TableData;
