@@ -1,11 +1,12 @@
 const { uri } = require('../../../config/config');
 const axios = require('axios');
-exports.getCities = async (req, res) => {
+exports.getSymbolData = async (req, res) => {
     try {
+        let symbol = req.params.symbol;
         let data = await axios.get(uri, {
             params: {
                 function: 'OVERVIEW',
-                symbol: 'IBM',
+                symbol: symbol,
                 apikey: 'CUJAJTOBSVMOWAHP'
             }
         });
