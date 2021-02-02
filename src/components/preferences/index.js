@@ -6,6 +6,7 @@ import { data } from './data'
 class preferences extends Component {
     state = {
         selected: null,
+        name: null,
         tableData: null,
         loading: false
     }
@@ -30,8 +31,8 @@ class preferences extends Component {
         }
         this.setState({ loading: false, tableData: tableData });
     }
-    setSelected = (symbol) => {
-        this.setState({ selected: symbol }, () => {
+    setSelected = (symbol, name) => {
+        this.setState({ selected: symbol, name: name }, () => {
             this.getSymbol();
         })
     }
@@ -45,12 +46,12 @@ class preferences extends Component {
                         <label>Select a Company</label>
                         <div className="dropdown">
                             <button className="btn border dropdown-toggle form-control" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                -Select a Company-
-                        </button>
+                                {this.state.name ? this.state.name : '-Select a Company-'}
+                            </button>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 {data.map((dropData, i) => {
                                     return (
-                                        < a className="dropdown-item" key={i} href="#" onClick={() => this.setSelected(dropData.symbol)}>{dropData.name}</a>
+                                        < a className="dropdown-item" key={i} href="#" onClick={() => this.setSelected(dropData.symbol, dropData.name)}>{dropData.name}</a>
                                     );
                                 })
                                 }
