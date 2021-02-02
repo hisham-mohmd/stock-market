@@ -1,4 +1,4 @@
 
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:2000';
+axios.defaults.baseURL = 'https://mighty-depths-16488.herokuapp.com';
 export default axios;
